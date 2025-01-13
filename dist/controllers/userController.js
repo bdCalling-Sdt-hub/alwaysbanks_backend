@@ -26,6 +26,7 @@ const get = async (req, res, next) => {
 const getAllUsers = async (req, res, next) => {
     const role = req.query.role;
     const isApproved = req.query.isApproved === "true";
+    console.log(role);
     const dateString = req.query.date;
     const searchQuery = req.query.search;
     let startAt, endAt;

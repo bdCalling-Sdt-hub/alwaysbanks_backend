@@ -52,10 +52,10 @@ const userSchema = new mongoose_1.Schema({
                     required: true,
                 },
                 startAt: {
-                    type: String,
+                    type: Number,
                 },
                 endAt: {
-                    type: String,
+                    type: Number,
                 },
             },
         ],
@@ -79,8 +79,8 @@ const userSchema = new mongoose_1.Schema({
                 rating: {
                     type: Number,
                     required: true,
-                    min: [1, "Star rating must be at least 1"],
-                    max: [5, "Star rating must not exceed 5"],
+                    min: [1, "Rating must be at least 1"],
+                    max: [5, "Rating must not exceed 5"],
                 },
                 comment: {
                     type: String,
@@ -169,6 +169,65 @@ const userSchema = new mongoose_1.Schema({
                 location: {
                     type: String,
                     required: true,
+                },
+            },
+        ],
+    },
+    requests: {
+        type: [
+            {
+                types: {
+                    type: String,
+                    required: true,
+                    enum: enum_1.RequestType,
+                },
+                status: {
+                    type: String,
+                    required: true,
+                    enum: enum_1.RequestStatus,
+                },
+                date: {
+                    type: Date,
+                    required: true,
+                },
+                schedule: {
+                    startAt: {
+                        type: String,
+                    },
+                    endAt: {
+                        type: String,
+                    },
+                },
+                map: {
+                    location: {
+                        type: String,
+                    },
+                    latitude: {
+                        type: Number,
+                        required: true,
+                    },
+                    longitude: {
+                        type: Number,
+                        required: true,
+                    },
+                },
+                user: {
+                    type: mongoose_1.Schema.Types.ObjectId,
+                    ref: "User",
+                    required: true,
+                },
+                name: {
+                    type: String,
+                    required: true,
+                },
+                avatar: {
+                    type: String,
+                },
+                rating: {
+                    type: Number,
+                    required: true,
+                    min: [1, "Rating must be at least 1"],
+                    max: [5, "Rating must not exceed 5"],
                 },
             },
         ],
